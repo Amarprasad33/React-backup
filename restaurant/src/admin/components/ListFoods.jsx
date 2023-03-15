@@ -1,14 +1,19 @@
 import {  Button,Card,CardActions,CardContent,Grid,Typography, } from "@mui/material";
+import axios from "axios";
 import { useEffect, useState } from "react";
- import FoodsJson from '../../data/Foods.json';
+import { Link } from "react-router-dom";
 
 const ListFoods = () => {
     const [foods, setFoods] = useState([]);
 
-    useEffect(() => {
-        setFoods(FoodsJson);
-    },[])
-
+    const getFoods = async () => {
+        const response = await axios.get("http://localhost:8000/foods");
+        setFoods(response.data);
+      }
+    
+      useEffect(()=>{
+        getFoods();
+      },[])
     return (
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -36,7 +41,7 @@ const ListFoods = () => {
                       <Typography variant="body2">{Food.id}</Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size="small">View Details</Button>
+                    <Button component={Link} to={`/admin/detail/${Food.id}`}>View Details</Button>
                     </CardActions>
                   </Card>
                 </Grid>

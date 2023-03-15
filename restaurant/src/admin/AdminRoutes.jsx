@@ -6,7 +6,7 @@ const AdminRoutes = () => {
     return (
         <Routes>
             <Route path="list" element={<ListFoods />} />
-            <Route path="detail" element={<DetailFood />} />
+            <Route path="detail/:id" element={<DetailFood />} />
         </Routes>
     );
 }
