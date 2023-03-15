@@ -1,7 +1,14 @@
 import {  Button,Card,CardActions,CardContent,Grid,Typography, } from "@mui/material";
-import Foods from '../../data/Foods.json';
+import { useEffect, useState } from "react";
+ import FoodsJson from '../../data/Foods.json';
 
 const ListFoods = () => {
+    const [foods, setFoods] = useState([]);
+
+    useEffect(() => {
+        setFoods(FoodsJson);
+    },[])
+
     return (
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -9,7 +16,7 @@ const ListFoods = () => {
           </Grid>
           <Grid item xs={12}>
             <Grid container spacing={2}>
-              {Foods.map((Food) => (
+              {foods.map((Food) => (
                 <Grid item xs={4} key={Food.id}>
                   <Card>
                     <CardContent>

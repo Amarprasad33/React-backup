@@ -1,4 +1,5 @@
-[
+{
+  "foods": [
     {
         "id": "4ea500b1-9b24-444e-8c22-f6524e7f6be3",
         "food_name": "Casearia Jacq.",
@@ -7000,3 +7001,4 @@
         "food_category": "edu"
     }
 ]
+}
