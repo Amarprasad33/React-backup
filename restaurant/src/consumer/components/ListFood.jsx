@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const ListFoods = () => {
+const ListFood = () => {
     const [foods, setFoods] = useState([]);
 
     const getFoods = async () => {
@@ -17,7 +17,7 @@ const ListFoods = () => {
     return (
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Typography variant="h4">Book List</Typography>
+            <Typography variant="h4">Book List For Consumers</Typography>
           </Grid>
           <Grid item xs={12}>
             <Grid container spacing={2}>
@@ -41,7 +41,7 @@ const ListFoods = () => {
                       <Typography variant="body2">{Food.id}</Typography>
                     </CardContent>
                     <CardActions>
-                    <Button component={Link} to={`/admin/detail/${Food.id}`}>View Details</Button>
+                    <Button component={Link} to={`/consumer/detail/${Food.id}`}>View Details</Button>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -52,4 +52,4 @@ const ListFoods = () => {
       );
 };
 
-export default ListFoods;
+export default ListFood;

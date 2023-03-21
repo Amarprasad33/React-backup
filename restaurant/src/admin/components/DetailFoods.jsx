@@ -4,20 +4,20 @@ import {Button, Card, CardActions, CardContent, Grid, Typography,
   import { useEffect, useState } from "react";
   import { useNavigate, useParams } from "react-router-dom";
   
-  const DetailFood = () => {
+  const DetailFoods = () => {
     const params = useParams();
     const navigate = useNavigate();
     const [food, setFood] = useState();
   
     const getFood = async () => {
       const { data } = await axios.get(
-        `http://localhost:8000/foods/${params.id}`
+        `http://localhost:3000/foods/${params.id}`
       );
       setFood(data);
     };
   
     const deleteFood = async () => {
-      await axios.delete(`http://localhost:8000/foods/${params.id}`);
+      await axios.delete(`http://localhost:3000/foods/${params.id}`);
       navigate("/admin/list");
     };
   
@@ -54,5 +54,5 @@ import {Button, Card, CardActions, CardContent, Grid, Typography,
     );
   };
   
-  export default DetailFood;
+  export default DetailFoods;
   
