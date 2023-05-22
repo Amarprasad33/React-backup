@@ -15,19 +15,16 @@ const reducer = (state, action) => {
             state.count = state.count + 1;
             return;
         case DECREMENT_COUNT:
-            state.count = state.count + 1;
+            state.count = state.count - 1;
+            return;
+
+         case ADD_VALUE_TO_COUNT:
+            state.count = state.count + state.valueToAdd;
+            state.valueToAdd = 0;
             return;
         case SET_VALUE_TO_ADD:
-            return {
-                ...state,
-                valueToAdd: action.payload,
-            }
-        case ADD_VALUE_TO_COUNT:
-            return {
-                ...state,
-                count: state.count + state.valueToAdd,
-                valueToAdd: 0,
-            }
+            state.valueToAdd = action.payload
+            return;
         // Community standard says that if the 
         // default part gets executed then something is wrong with your code 
         // so throw an error
@@ -35,14 +32,11 @@ const reducer = (state, action) => {
         // Return the state only
         default:
             // throw new Error("Unexpected action type: " + action.type);
-            return state;
+            return;
     }
 };
 
 function CounterPage({ initialCount }){
-    // const { count, increment } = useCounter(initialCount);
-    // const [count, setCount] = useState(initialCount);
-    // const [valueToAdd, setValueToAdd] = useState(0);
     const [state, dispatch] = useReducer(produce(reducer), {
         count: initialCount,
         valueToAdd: 0,
