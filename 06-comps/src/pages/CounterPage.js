@@ -96,7 +96,6 @@ function CounterPage({ initialCount }){
                 <Button>Add it!</Button>
             </form>
         </Panel>
-
     );
 }
 
